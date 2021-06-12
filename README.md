@@ -42,7 +42,7 @@ import split "github.com/pen/split-slice-go"
 result := split.Sentence(
     "I have a pen. I have an apple.",  // 分割したい文字列
     2,                                 // 分割数
-    false,                             // 長い行を早めに出す
+    false,                             // 長い行を早めに出すか?
 )
 ```
 3番目の引数は、前節の例において2つの解のどちらを返すかを指定することにあたる。
@@ -69,9 +69,8 @@ func main() {
     fmt.Printf("%s\n", split.Sentence(sentence, 7, true))
 }
 ```
-```shell
+```console
 $ go run sample.go 
-
 Are hackers a threat?
 The degree of threat
 presented by any conduct,
@@ -87,7 +86,6 @@ legal or illegal, depends
 on the actions and intent
 of the individual and the
 harm they cause.
-
 $
 ```
 
@@ -115,7 +113,7 @@ for i := 0; i < nPart; i++ {
 
 `Slice` は []interface{} を分割する。要素からint型の“長さ”をとりだす関数を渡す必要がある。
 
-```
+```go
 indice := split.Slice(
     slice,
     func(i int) int {
