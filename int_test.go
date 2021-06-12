@@ -21,6 +21,24 @@ func TestInt(t *testing.T) {
 			want     []int
 		}{
 			{
+				"empty",
+				[]int{},
+				3, false,
+				nil,
+			},
+			{
+				"zero parts",
+				[]int{1, 2, 3},
+				0, false,
+				nil,
+			},
+			{
+				"less parts",
+				[]int{1, 2, 3},
+				5, false,
+				[]int{0, 1, 2, 3},
+			},
+			{
 				"normal: 5|55|55",
 				[]int{5, 5, 5, 5, 5},
 				3, false,

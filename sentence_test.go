@@ -20,7 +20,22 @@ func TestSentence(t *testing.T) {
 			want     string
 		}{
 			{
-				"fold 3 lines",
+				"nulstring",
+				"", 3, false,
+				"",
+			},
+			{
+				"split one word",
+				"word", 3, false,
+				"word",
+			},
+			{
+				"normal",
+				"the sun shines blight on the old kentucky home", 3, false,
+				"the sun shines\nblight on the\nold kentucky home",
+			},
+			{
+				"greedy",
 				"the sun shines blight on the old kentucky home", 3, true,
 				"the sun shines\nblight on the old\nkentucky home",
 			},
