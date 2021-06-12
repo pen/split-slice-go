@@ -2,13 +2,13 @@ package split
 
 import "strings"
 
-// Sentence splits one-line string into n-lines string.
+// Sentence splits one-line string into N-lines minimal width.
 func Sentence(sentence string, n int, greedy bool) string {
 	words := strings.Split(sentence, " ")
 
 	points := Slice(
 		words, func(i int) int {
-			return len(words[i]) + 1 // +1 for trailing space
+			return len(words[i]) + 1 // +1 for space separator
 		},
 		n, greedy,
 	)
