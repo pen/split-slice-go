@@ -42,7 +42,7 @@ type state struct {
 	totalUpto []int
 }
 
-// newState is kinda constructor of state
+// newState is constructor of state.
 func newState(sliceLen int, getSize func(i int) int, nPart int, greedy bool) *state {
 	indexOf := make([]int, nPart+1)
 	indexOf[0] = sliceLen
@@ -70,7 +70,7 @@ func newState(sliceLen int, getSize func(i int) int, nPart int, greedy bool) *st
 	}
 }
 
-// bestSplitPoints makes result of exported function Slice.
+// bestSplitPoints builds result of exported function Slice.
 func (s *state) bestSplitPoints() []int {
 	// recycle s.indexOf that finished its original role.
 	copy(s.indexOf, s.minIndexOf)
@@ -134,7 +134,7 @@ func (s *state) recordMin(partSize int) {
 	copy(s.minIndexOf, s.indexOf)
 }
 
-// maxPartSize is score of a candidate. lower is better.
+// maxPartSize calculates value of current candidate. lower is better.
 func (s *state) maxPartSize() int {
 	max := 0
 	for i := 0; i < len(s.indexOf)-1; i++ {
@@ -151,7 +151,7 @@ func (s *state) partSize(startIndex, nextIndex int) int {
 	return s.totalUpto[nextIndex] - s.totalUpto[startIndex]
 }
 
-// reverseInt is a utility to reverse []int .
+// reverseInt reverses []int in place.
 func reverseInt(s []int) {
 	for i, j := 0, len(s)-1; i < j; i, j = i+1, j-1 {
 		s[i], s[j] = s[j], s[i]
