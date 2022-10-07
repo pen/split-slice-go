@@ -96,14 +96,14 @@ $
 ```go
 origin := []int{3, 1, 4, 1, 5, 6, 5, 3, 5}
 
-indice := split.IntSlice(origin, 3, false) //=> [0 3 6 9]
-nPart := len(indice) - 1;
+indices := split.IntSlice(origin, 3, false) //=> [0 3 6 9]
+nPart := len(indices) - 1;
 
 result := make([][]int, nPart)
 
-// indiceを使ってもとのスライスから切り出す
+// indicesを使ってもとのスライスから切り出す
 for i := 0; i < nPart; i++ {
-    result[i] = origin[indice[i]:indice[i+1]]
+    result[i] = origin[indices[i]:indices[i+1]]
 }
 
 //=> [[3 1 4 1] [5 6] [5 3 5]]
@@ -114,7 +114,7 @@ for i := 0; i < nPart; i++ {
 `Slice` は []interface{} を分割する。要素からint型の“長さ”をとりだす関数を渡す必要がある。
 
 ```go
-indice := split.Slice(
+indices := split.Slice(
     slice,
     func(i int) int {
         // slice[i] の長さを返す
